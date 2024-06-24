@@ -1,24 +1,24 @@
 # dependencies imports
-from yaml import safe_load
-from yaml import YAMLError
-# convention imports
 from .atom import atom_convention_help
-from .tagged import tagged_convention_help
 from .karma_angular import karma_convention_help
 from .karma_angular import angular_convention_help
 from .symphony_cmf import symphony_convention_help
-# utils imports
-from commit_helper.utils.colors import HELP
-from commit_helper.utils.colors import RESET
-from commit_helper.utils.colors import MIN_ERROR
-from commit_helper.utils.text_utils import debug
-from commit_helper.utils.text_utils import print_help
-from commit_helper.utils.utils import dump_convention
+from .tagged import tagged_convention_help
+from ..utils.colors import HELP
+from ..utils.colors import RESET
+from ..utils.colors import MIN_ERROR
+from ..utils.text_utils import debug
+from ..utils.text_utils import print_help
+from ..utils.utils import dump_convention
+from argparse import Namespace
+from pathlib import Path
 
+from yaml import YAMLError, safe_load
 
 # TODO: test
-def convention_help_handler(file_path, args, debug_mode):
-    if file_path.is_file() and args.convention is '':
+def convention_help_handler(file_path: Path, args: Namespace, debug_mode: bool) -> None:
+    convention: str = ""
+    if file_path.is_file() and not args.convention:
         debug('Found file for help', str(file_path), debug_mode)
         with open(str(file_path)) as target:
             try:
@@ -27,21 +27,18 @@ def convention_help_handler(file_path, args, debug_mode):
                 debug('Convention captured', convention, debug_mode)
             except YAMLError as err:
                 print(err)
-
     elif args.convention is not '':
         debug('Found convention in args', args, debug_mode)
         convention = args.convention
-
     else:
-        print(MIN_ERROR + 'No convention was specified!' + RESET)
+        print(f"{MIN_ERROR}No convention was specified!{RESET}")
         return
 
     debug('convention captured for helper', convention, debug_mode)
     get_help_to_defined_convention(convention, debug_mode)
 
-
 # TODO: test
-def get_help_to_defined_convention(convention, debug_mode):
+def get_help_to_defined_convention(convention: str, debug_mode: bool) -> None:
     debug('recieved convention for help catch', convention, debug_mode)
     if convention == 'angular':
         print_help(angular_convention_help)
