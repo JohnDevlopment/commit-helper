@@ -15,7 +15,7 @@ def dump_convention(config_file: ConfigFile) -> Any:
 def gen_co_author(co_author: str) -> str:
     ...
 
-def handle_convention_commit(convention: str, args: Namespace) -> str:
+def handle_conventioned_commit(convention: str, args: Namespace) -> str:
     ...
 
 def parser_cli() -> ArgumentParser:
