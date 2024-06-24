@@ -21,6 +21,7 @@ colorama = "^0.4.6"
 pytest = "^8.2.2"
 pytest-cov = "^5.0.0"
 pytest-watch = "^4.2.0"
+pylint = "^3.2.3"
 
 [tool.poetry.scripts]
 commit = "commit_helper.__main__:main"
