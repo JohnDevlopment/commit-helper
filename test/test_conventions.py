@@ -7,6 +7,7 @@ import yaml
 from commit_helper.conventions import (
     atom,
     custom_convention as custom,
+    john_convention as john,
     karma_angular as angular,
     symphony_cmf as symphony,
     no_convention,
@@ -31,6 +32,15 @@ class TestNoConvention:
     def test_no_convention_with_args(self):
         message = no_convention.just_message("Message")
         assert message == "Message\n"
+
+class TestJohnConvention:
+    def test_with_args(self):
+        message = john.john_convention("tag", "message", "context")
+        assert message == "[TAG] Context: message"
+
+    def test_with_args_but_no_context(self):
+        message = john.john_convention("tag", "message", "")
+        assert message == "[TAG] message"
 
 class TestKarmaAngularConvention:
     def test_with_context(self):

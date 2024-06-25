@@ -2,7 +2,7 @@ from argparse import ArgumentParser, Namespace
 from .protocols import ConfigFile
 from typing import Any, Literal, TypeAlias
 
-Convention: TypeAlias = Literal['angular', 'atom', 'karma', 'symphony', 'tagged']
+Convention: TypeAlias = Literal['angular', 'atom', 'john', 'karma', 'symphony', 'tagged']
 
 supported_conventions: list[Convention]
 

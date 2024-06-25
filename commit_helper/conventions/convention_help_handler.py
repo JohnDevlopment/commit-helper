@@ -5,6 +5,7 @@ from pathlib import Path
 from yaml import YAMLError, safe_load
 
 from .atom import atom_convention_help
+from .john_convention import john_convention_help
 from .karma_angular import karma_convention_help
 from .karma_angular import angular_convention_help
 from .symphony_cmf import symphony_convention_help
@@ -71,5 +72,7 @@ def get_help_to_defined_convention(convention: str, debug_mode: bool) -> None:
         print_help(symphony_convention_help)
     elif convention == "atom":
         print_help(atom_convention_help)
+    elif convention == "john":
+        print_help(john_convention_help)
     else:
         print(f"{MIN_ERROR}The chosen convention has no helper!{RESET}")

@@ -4,6 +4,7 @@ from .text_utils import notify
 from .text_utils import handle_context_arg
 from .text_utils import handle_tag_message_args
 from ..conventions.atom import atom_convention
+from ..conventions.john_convention import john_convention
 from ..conventions.karma_angular import karma_angular_convention
 from ..conventions.tagged import tagged_convention
 from ..conventions.symphony_cmf import symphony_convention
@@ -23,6 +24,7 @@ supported_conventions = [
     "symphony",
     "message",
     "atom",
+    "john",
 ]
 
 def gen_co_author(co_author) -> str:
@@ -50,6 +52,7 @@ def create_file(convention_name, dont_create=False):    # pragma: no cover
         notify('Successfully created the commiter file.')
 
 def parser_cli():
+    # pylint: disable=missing-function-docstring
     desc = 'A commit formatter tool to help you follow commit conventions.'
     help_convention = \
         """
@@ -133,6 +136,9 @@ def handle_conventioned_commit(convention: Convention, args: argparse.Namespace)
         commit_message = symphony_convention(tag, message)
     elif convention == "atom":
         commit_message = atom_convention(tag, message)
+    elif convention == "john":
+        context = handle_context_arg(args.context)
+        commit_message = john_convention(tag, message, context)
     else:
         _invalid_convention(convention)
 
