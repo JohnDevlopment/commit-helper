@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "commit-helper"
-version = "3.4.18"
+version = "3.5.0a0"
 description = "A python program that helps you write commits following commit conventions"
 authors = [
         "andre-filho <andre.filho001@outlook.com>",
