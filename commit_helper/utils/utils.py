@@ -14,7 +14,7 @@ from yaml import dump
 
 if TYPE_CHECKING:
     from .utils import Convention
-    from typing import Never
+    from typing_extensions import Never
 
 supported_conventions = [
     "angular",
