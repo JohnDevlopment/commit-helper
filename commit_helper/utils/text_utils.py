@@ -1,49 +1,66 @@
+# pylint: disable=missing-module-docstring
 from .colors import RESET
 from .colors import DEBUG_COLOR
 from .colors import INPUT_COLOR
 from .colors import NOTIFY_COLOR
 from .colors import HELP
 
-
 def get_text():
-    tag = str(input(INPUT_COLOR + 'type the tag: ' + RESET))
-    msg = str(input(INPUT_COLOR + 'type the commit message: ' + RESET)).lower()
+    """
+    Query the user for the tag and message.
+
+    Returns a tuple with the tag and message.
+    """
+    tag = input(f"{INPUT_COLOR}type the tag: {RESET}")
+    msg = input(f"{INPUT_COLOR}type the commit message: {RESET}")
     return tag, msg
 
-
 def get_context():
-    context = str(input(INPUT_COLOR + 'type the context: ' + RESET) or '')
-    context.lower()
-    return context
+    """
+    Query the user for the commit context.
 
-
-def sanitize_as_empty_string(string):
-    if string is None:
-        return ''
-    return string
-
-
-def notify(message):
-    print(NOTIFY_COLOR + str(message) + RESET)
-
-
-def debug(message, value, show=False):
-    if show:
-        mid = 'DEBUG: ' + str(message) + ' ~> ' + str(value)
-        print(DEBUG_COLOR + mid + RESET)
-
-
-def print_help(message):
-    print(HELP + str(message) + RESET)
-
-
-def handle_tag_message_args(tag='', message=''):
-    if tag + message is not '':
-        return tag, message
-    return get_text()
-
+    Returns the input in lowercase.
+    """
+    context = input(f"{INPUT_COLOR}type the context: {RESET}")
+    return context.lower()
 
 def handle_context_arg(context=''):
-    if context is not '':
-        return context
-    return get_context()
+    # pylint: disable=missing-function-docstring
+    return context if context else get_context()
+
+def handle_tag_message_args(tag='', message=''):
+    # pylint: disable=missing-function-docstring
+    return (tag, message) if f"{tag}{message}" != "" else get_text()
+
+def sanitize_as_empty_string(string: str | None):
+    """
+    Sanitize the argument to always be a string.
+
+    If STRING is None, an empty string is returned, otherwise
+    STRING is returned.
+    """
+    return string or ""
+
+# Print functions
+
+def debug(message, value, show=False):
+    """
+    Print a message with the debug level.
+
+    MESSAGE and VALUE are printed only if SHOW is true.
+    """
+    if show:
+        mid = f"DEBUG: {message} ~> {value}"
+        print(f"{DEBUG_COLOR}{mid}{RESET}")
+
+def notify(message: str):
+    """
+    Print MESSAGE with the notify level.
+    """
+    print(NOTIFY_COLOR, message, RESET, sep="")
+
+def print_help(message: str):
+    """
+    Print MESSAGE with the help level.
+    """
+    print(f"{HELP}{message}{RESET}")
