@@ -8,7 +8,7 @@ authors = [
 ]
 maintainers = ["JohnDevlopment <50782633+JohnDevlopment@users.noreply.github.com>"]
 license = "GPL-3.0-or-later"
-readme = "README.md"
+readme = "README.asciidoc"
 
 [tool.poetry.dependencies]
 python = "^3.10"
