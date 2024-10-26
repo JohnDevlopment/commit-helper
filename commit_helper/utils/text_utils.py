@@ -26,6 +26,8 @@ def get_context():
 
 def handle_context_arg(context=''):
     # pylint: disable=missing-function-docstring
+    if context == "-":
+        return ""
     return context if context else get_context()
 
 def handle_tag_message_args(tag='', message=''):
