@@ -2,7 +2,7 @@
 `karma` convention.
 """
 
-def karma_angular_convention(tag, msg, context):
+def karma_angular_convention(tag: str, msg: str, context: str):
     # pylint: disable=missing-function-docstring
     tag = tag.lower()
 
