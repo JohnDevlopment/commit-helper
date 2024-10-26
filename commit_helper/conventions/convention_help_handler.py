@@ -1,15 +1,17 @@
-# dependencies imports
+"""
+Handler for `-s` flag.
+"""
 from argparse import Namespace
 from pathlib import Path
 
 from yaml import YAMLError, safe_load
 
-from .atom import atom_convention_help
-from .john_convention import john_convention_help
+from .atom import ATOM_CONVENTION_HELP
+from .john_convention import JOHN_CONVENTION_HELP
 from .karma_angular import karma_convention_help
-from .karma_angular import angular_convention_help
-from .symphony_cmf import symphony_convention_help
-from .tagged import tagged_convention_help
+from .karma_angular import ANGULAR_CONVENTION_HELP
+from .symphony_cmf import SYMPHONY_CONVENTION_HELP
+from .tagged import TAGGED_CONVENTION_HELP
 from ..utils.colors import RESET
 from ..utils.colors import MIN_ERROR
 from ..utils.text_utils import debug
@@ -63,16 +65,16 @@ def get_help_to_defined_convention(convention: str, debug_mode: bool) -> None:
     """
     debug("recieved convention for help catch", convention, debug_mode)
     if convention == "angular":
-        print_help(angular_convention_help)
+        print_help(ANGULAR_CONVENTION_HELP)
     elif convention == "tagged":
-        print_help(tagged_convention_help)
+        print_help(TAGGED_CONVENTION_HELP)
     elif convention == "karma":
         print_help(karma_convention_help)
     elif convention == "symphony":
-        print_help(symphony_convention_help)
+        print_help(SYMPHONY_CONVENTION_HELP)
     elif convention == "atom":
-        print_help(atom_convention_help)
+        print_help(ATOM_CONVENTION_HELP)
     elif convention == "john":
-        print_help(john_convention_help)
+        print_help(JOHN_CONVENTION_HELP)
     else:
         print(f"{MIN_ERROR}The chosen convention has no helper!{RESET}")
