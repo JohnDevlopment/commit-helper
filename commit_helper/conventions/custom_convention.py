@@ -1,9 +1,13 @@
-# custom commits are only acceptable when you have a config file
-from commit_helper.utils.text_utils import debug
-from commit_helper.utils.text_utils import get_context
+"""
+Custom commit convention.
 
+Custom commits are only acceptable when you have a config
+file.
+"""
+from ..utils.text_utils import get_context, debug
 
 def custom_convention(tag, message, config_file, debug_mode):
+    # pylint: disable=missing-function-docstring
     debug('tag', tag, debug_mode)
     debug('message', message, debug_mode)
     debug('pattern from file', config_file['commit_pattern'], debug_mode)
