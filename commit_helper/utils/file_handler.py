@@ -1,3 +1,10 @@
+"""
+Handler for file-based commits.
+
+Functions:
+* get_file_path()
+* handle_file_based_commit()
+"""
 from __future__ import annotations
 from os import system
 from pathlib import Path
