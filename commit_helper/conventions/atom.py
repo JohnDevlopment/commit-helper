@@ -1,7 +1,11 @@
+# pylint: disable=missing-module-docstring
+from __future__ import annotations
+
 def atom_convention(tag, msg):
+    # pylint: disable=missing-function-docstring
     tag = tag.lower()
     msg = msg.capitalize()
-    composed_message = ":%s: %s\n" % (tag, msg)
+    composed_message = f":{tag}: {msg}\n" # ":%s: %s\n" % (tag, msg)
     return composed_message
 
 
