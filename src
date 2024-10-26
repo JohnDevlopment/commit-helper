@@ -1,0 +1,30 @@
+# -*- mode: sh; -*-
+
+if [[ -z $VIRTUAL_ENV ]]; then
+    source .venv/bin/activate
+fi
+
+alias emacs="execnohup emacs; unalias emacs; history -s execnohup emacs"
+alias git-gui="execnohup --sleep 2 -n 2 git gui; unalias git-gui; history -s execnohup --sleep 2 -n 2 git gui"
+
+source ~/src/.gitprojectrc
+source ~/src/.fzf-history
+source ~/src/.fzf-pylint commit_helper commit_helper
+
+## usage: list-commands
+function list-commands {
+cat <<EOF
+Commands:
+  * emacs (once, modifies history)
+  * git-gui (once, modifies history)
+EOF
+}
+
+list-commands
+
+history -c
+HISTFILE="$VIRTUAL_ENV/.bash_history"
+HISTSIZE=500
+HISTFILESIZE=500
+export HISTFILE HISTSIZE HISTFILESIZE
+history -r
