@@ -1,17 +1,20 @@
+# pylint: disable=missing-module-docstring
 from __future__ import annotations
-from .protocols import ConfigFile
-from .text_utils import notify
-from .text_utils import handle_context_arg
-from .text_utils import handle_tag_message_args
+from typing import TYPE_CHECKING
+import argparse
+import sys
+
+from yaml import dump
+
 from ..conventions.atom import atom_convention
 from ..conventions.john_convention import john_convention
 from ..conventions.karma_angular import karma_angular_convention
-from ..conventions.tagged import tagged_convention
 from ..conventions.symphony_cmf import symphony_convention
-from typing import TYPE_CHECKING
-import argparse, sys
-
-from yaml import dump
+from ..conventions.tagged import tagged_convention
+from .protocols import ConfigFile
+from .text_utils import handle_context_arg
+from .text_utils import handle_tag_message_args
+from .text_utils import notify
 
 if TYPE_CHECKING:
     from .utils import Convention
@@ -19,12 +22,12 @@ if TYPE_CHECKING:
 
 supported_conventions = [
     "angular",
-    "karma",
-    "tagged",
-    "symphony",
-    "message",
     "atom",
     "john",
+    "karma",
+    "message",
+    "symphony",
+    "tagged",
 ]
 
 def gen_co_author(co_author) -> str:
@@ -43,9 +46,10 @@ def create_file(convention_name, dont_create=False):    # pragma: no cover
     """
 
     if not dont_create:
-        data = dict(
-            convention=convention_name
-        )
+        data = {
+            'convention': convention_name,
+        }
+        # pylint: disable=unspecified-encoding
         with open('commiter.yml', 'w') as output_file:
             output_file.write(dump(data, stream=None,
                                    default_flow_style=False))
@@ -124,10 +128,10 @@ def handle_conventioned_commit(convention: Convention, args: argparse.Namespace)
     tag, message = handle_tag_message_args(args.tag, args.message)
     commit_message: str = ""
 
-    def _invalid_convention(convention: Never):
+    def _invalid_convention(_convention: Never):
         pass
 
-    if convention == "angular" or convention == "karma":
+    if convention in ["angular", "karma"]:
         context = handle_context_arg(args.context)
         commit_message = karma_angular_convention(tag, message, context)
     elif convention == "tagged":
@@ -140,6 +144,6 @@ def handle_conventioned_commit(convention: Convention, args: argparse.Namespace)
         context = handle_context_arg(args.context)
         commit_message = john_convention(tag, message, context)
     else:
-        _invalid_convention(convention)
+        _invalid_convention(convention) # pyright: ignore[reportArgumentType]
 
     return commit_message
