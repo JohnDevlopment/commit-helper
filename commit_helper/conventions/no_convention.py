@@ -1,8 +1,11 @@
-from commit_helper.utils.colors import INPUT_COLOR
-from commit_helper.utils.colors import RESET
+"""
+No convention.
+"""
+from __future__ import annotations
+from ..utils.colors import INPUT_COLOR, RESET
 
-
-def just_message(msg=''):
+def just_message(msg: str=""):
+    # pylint: disable=missing-function-docstring
     if msg == '':
         message = str(input(INPUT_COLOR + "commit message: " + RESET))
     else:
