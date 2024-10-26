@@ -1,6 +1,12 @@
-def tagged_convention(tag, msg):
+"""
+`tagged` convention.
+"""
+from __future__ import annotations
+
+def tagged_convention(tag: str, msg: str):
+    # pylint: disable=missing-function-docstring
     tag = tag.upper()
-    composed_message = "%s: %s\n" % (tag, msg)
+    composed_message = f"{tag}: {msg}\n"
     return composed_message
 
 
