@@ -4,7 +4,7 @@ def tagged_convention(tag, msg):
     return composed_message
 
 
-tagged_convention_help = \
+TAGGED_CONVENTION_HELP = \
     """
     The tagged convention:
 

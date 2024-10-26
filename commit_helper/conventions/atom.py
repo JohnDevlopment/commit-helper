@@ -5,7 +5,7 @@ def atom_convention(tag, msg):
     return composed_message
 
 
-atom_convention_help = \
+ATOM_CONVENTION_HELP = \
     """
     The atom convention:
 

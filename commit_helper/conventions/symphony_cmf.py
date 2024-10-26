@@ -4,7 +4,7 @@ def symphony_convention(tag, msg):
     return composed
 
 
-symphony_convention_help = \
+SYMPHONY_CONVENTION_HELP = \
     """
     The symphony CMF convention:
 

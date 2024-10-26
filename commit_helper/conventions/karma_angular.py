@@ -7,7 +7,7 @@ def karma_angular_convention(tag, msg, context):
     return composed_message
 
 
-angular_convention_help = \
+ANGULAR_CONVENTION_HELP = \
     """
     The angular convention:
 

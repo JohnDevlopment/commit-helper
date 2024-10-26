@@ -7,7 +7,7 @@ def john_convention(tag: str, msg: str, context: str) -> str:
         return f"[{tag}] {msg}"
     return f"[{tag}] {context}: {msg}"
 
-john_convention_help = \
+JOHN_CONVENTION_HELP = \
         """
         The john convention:
 
