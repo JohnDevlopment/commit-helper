@@ -1,3 +1,6 @@
+"""
+Color constants.
+"""
 from colored import fg
 from colored import attr
 
