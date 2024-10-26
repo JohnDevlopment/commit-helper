@@ -8,7 +8,7 @@ from yaml import YAMLError, safe_load
 
 from .atom import ATOM_CONVENTION_HELP
 from .john_convention import JOHN_CONVENTION_HELP
-from .karma_angular import karma_convention_help
+from .karma_angular import KARMA_CONVENTION_HELP
 from .karma_angular import ANGULAR_CONVENTION_HELP
 from .symphony_cmf import SYMPHONY_CONVENTION_HELP
 from .tagged import TAGGED_CONVENTION_HELP
@@ -69,7 +69,7 @@ def get_help_to_defined_convention(convention: str, debug_mode: bool) -> None:
     elif convention == "tagged":
         print_help(TAGGED_CONVENTION_HELP)
     elif convention == "karma":
-        print_help(karma_convention_help)
+        print_help(KARMA_CONVENTION_HELP)
     elif convention == "symphony":
         print_help(SYMPHONY_CONVENTION_HELP)
     elif convention == "atom":

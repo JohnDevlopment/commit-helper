@@ -41,7 +41,7 @@ ANGULAR_CONVENTION_HELP = \
     <scope> or <context>, <body> and <footer>
     """
 
-karma_convention_help = \
+KARMA_CONVENTION_HELP = \
     """
     The karma convention:
 
