@@ -1,6 +1,10 @@
+"""
+`john` convention.
+"""
 from __future__ import annotations
 
 def john_convention(tag: str, msg: str, context: str) -> str:
+    # pylint: disable=missing-function-docstring
     tag = tag.upper()
     context = context.capitalize()
     if not context:
