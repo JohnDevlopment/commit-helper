@@ -17,7 +17,7 @@ from .text_utils import handle_tag_message_args
 from .text_utils import notify
 
 if TYPE_CHECKING:
-    from .utils import Convention
+    from .utils import Convention # pylint: disable=import-self
     from typing_extensions import Never
 
 supported_conventions = [
