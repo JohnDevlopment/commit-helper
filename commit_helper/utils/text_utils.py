@@ -1,9 +1,24 @@
-# pylint: disable=missing-module-docstring
+"""
+Text utilities.
+
+Functions:
+
+* get_context()
+"""
 from .colors import RESET
 from .colors import DEBUG_COLOR
 from .colors import INPUT_COLOR
 from .colors import NOTIFY_COLOR
 from .colors import HELP
+
+def get_context():
+    """
+    Query the user for the commit context.
+
+    Returns the input in lowercase.
+    """
+    context = input(f"{INPUT_COLOR}type the context: {RESET}")
+    return context.lower()
 
 def get_text():
     """
@@ -15,23 +30,23 @@ def get_text():
     msg = input(f"{INPUT_COLOR}type the commit message: {RESET}")
     return tag, msg
 
-def get_context():
-    """
-    Query the user for the commit context.
-
-    Returns the input in lowercase.
-    """
-    context = input(f"{INPUT_COLOR}type the context: {RESET}")
-    return context.lower()
-
 def handle_context_arg(context=''):
-    # pylint: disable=missing-function-docstring
+    """
+    Handle the context argument.
+
+    Prompts the user for the context if CONTEXT is empty or
+    equal to `-`.
+    """
     if context == "-":
         return ""
     return context if context else get_context()
 
 def handle_tag_message_args(tag='', message=''):
-    # pylint: disable=missing-function-docstring
+    """
+    Handle the tag and message arguments.
+
+    If both TAG and MESSAGE are empty, calls `get_text()`.
+    """
     return (tag, message) if f"{tag}{message}" != "" else get_text()
 
 def sanitize_as_empty_string(string: str | None):
