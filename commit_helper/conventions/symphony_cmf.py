@@ -1,8 +1,13 @@
-def symphony_convention(tag, msg):
-    tag = tag.capitalize()
-    composed = "[%s] %s\n" % (tag, msg)
-    return composed
+"""
+`symphony` convention.
+"""
+from __future__ import annotations
 
+def symphony_convention(tag: str, msg: str):
+    # pylint: disable=missing-function-docstring
+    tag = tag.capitalize()
+    composed = f"[{tag}] {msg}\n"
+    return composed
 
 SYMPHONY_CONVENTION_HELP = \
     """
