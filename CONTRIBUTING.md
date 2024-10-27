@@ -17,5 +17,5 @@ You can start contributing to this project by:
 
 ## What do I need to know before getting started?
 
-Actually, you need to read only our [README](README.md), our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) and know that we have pull request and issue templates, so they are to be followed.
+Actually, you need to read only our [README](README.asciidoc), our [CODE OF CONDUCT](CODE_OF_CONDUCT.md) and know that we have pull request and issue templates, so they are to be followed.
 
