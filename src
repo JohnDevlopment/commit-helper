@@ -20,6 +20,12 @@ Commands:
 EOF
 }
 
+## usage: find-regex PATTERN
+function find-regex {
+    local pattern=${1:?missing PATTERN}
+    find -type f -path "*commit_helper/*.py" | parallel -X "grep -EHn ${pattern@Q}"
+}
+
 list-commands
 
 history -c
