@@ -31,6 +31,7 @@ pythonPlatform = "Linux"
 typeCheckingMode = "standard"
 reportMissingTypeStubs = "information"
 reportAny = false
+reportImplicitRelativeImport = true
 
 [tool.poetry.scripts]
 commit = "commit_helper.__main__:main"
