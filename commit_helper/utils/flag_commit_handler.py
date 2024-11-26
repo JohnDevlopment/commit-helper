@@ -40,4 +40,7 @@ def convention_flag_handler(args: Namespace, debug_mode: bool):
     commit_message += gen_co_author(args.co_author)
     debug("commit message", commit_message, debug_mode)
 
-    system(f"git commit -m '{commit_message}'")
+    if args.dry_run:
+        print(f"git commit -m '{commit_message}'")
+    else:
+        system(f"git commit -m '{commit_message}'")

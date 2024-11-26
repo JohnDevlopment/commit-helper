@@ -8,6 +8,7 @@ Functions:
 from __future__ import annotations
 from os import system
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from yaml import safe_load
 from yaml import YAMLError
@@ -20,7 +21,10 @@ from .utils import dump_convention
 from .utils import validate_commiter_file
 from .utils import handle_conventioned_commit
 
-def handle_file_based_commit(file_path: Path, debug_mode: bool, args):
+if TYPE_CHECKING:
+    from argparse import Namespace
+
+def handle_file_based_commit(file_path: Path, debug_mode: bool, args: Namespace) -> None:
     """
     Make a commit using the convention specified in FILE_PATH.
 
@@ -56,7 +60,10 @@ def handle_file_based_commit(file_path: Path, debug_mode: bool, args):
             commit_msg += gen_co_author(args.co_author)
             debug('commit message', commit_msg, debug_mode)
 
-            system(f'git commit -m "{commit_msg}"')
+            if args.dry_run:
+                print(f'git commit -m "{commit_msg}"')
+            else:
+                system(f'git commit -m "{commit_msg}"')
 
         except YAMLError as err:
             print(err)

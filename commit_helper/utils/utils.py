@@ -81,6 +81,8 @@ def parser_cli():
                         help="Disables the creation of a commiter.yml file",
                         action="store_true")
 
+    parser.add_argument("-n", "--dry-run", help="Print the commit",
+                        action="store_true")
 
     parser.add_argument("-c", "--convention", choices=supported_conventions,
                         dest="convention", default="", help=help_convention)
