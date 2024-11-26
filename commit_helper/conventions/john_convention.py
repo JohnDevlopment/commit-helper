@@ -23,13 +23,13 @@ JOHN_CONVENTION_HELP = \
 
         ----
         Tags:
-        ADD:		Adding files
-        FIX:		Fixing a bug
-        FEATURE:	Changes that amount to adding a new feature
-        PROJECT:	Changes that affect the project itself or its build system
-        REFACTOR:	Changing the look of code but not its actual behavior
-        REMOVE:		Removing files
-        UPDATE:		Updating files
+        ADD:        Adding files, functions, code, etc.
+        FIX:        Fixing a bug or mistake
+        FEATURE:    Changes that amount to adding a new feature
+        PROJECT:    Changes that affect the project itself or its build system
+        REFACTOR:   Changing the look of code but not its actual behavior
+        REMOVE:     Removing files, functions, code, etc.
+        UPDATE:     Updating files
 
         ----
         Optional fields:
