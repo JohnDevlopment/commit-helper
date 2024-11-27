@@ -12,6 +12,8 @@ Functions:
 * notify()
 * print_help()
 """
+from pathlib import Path
+import atexit
 import readline
 
 from .colors import RESET
@@ -19,6 +21,24 @@ from .colors import DEBUG_COLOR
 from .colors import INPUT_COLOR
 from .colors import NOTIFY_COLOR
 from .colors import HELP
+
+_Init = False
+
+@atexit.register
+def _cleanup() -> None:
+    hf = Path("/tmp/.commit-history")
+    if hf.exists():
+        readline.append_history_file(5, hf)
+    else:
+        readline.write_history_file(hf)
+
+def _init() -> None:
+    global _Init
+    if not _Init:
+        _Init = True
+        hf = Path("/tmp/.commit-history")
+        if hf.exists():
+            readline.read_history_file(hf)
 
 def get_context() -> str:
     """
@@ -90,3 +110,5 @@ def print_help(message: str) -> None:
     Print MESSAGE with the help level.
     """
     print(f"{HELP}{message}{RESET}")
+
+_init()
