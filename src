@@ -6,6 +6,7 @@ fi
 
 alias emacs="execnohup emacs; unalias emacs; history -s execnohup emacs"
 alias git-gui="execnohup --sleep 2 -n 2 git gui; unalias git-gui; history -s execnohup --sleep 2 -n 2 git gui"
+alias rmcache='find -type d -iname __pycache__ -execdir rm -rfv \{} \; 2> /dev/null'
 
 source ~/src/.gitprojectrc
 source ~/src/.fzf-history
